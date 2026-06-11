@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Win to Nil — can your dream XII go 28-0?</title>
+<meta name="description" content="Draft the ultimate XII from every Ryder & Presidents Cup since 1991, then see if your dream team can win all 28 matches and go to nil.">
+<meta name="theme-color" content="#0A1714">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1714'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23CBA85C' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23E9D29A'/%3E%3C/svg%3E">
+<!-- Link preview (WhatsApp / iMessage / social). og:image needs an ABSOLUTE url once hosted -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://win-to-nil.com/">
+<meta property="og:site_name" content="Win to Nil">
+<meta property="og:title" content="Win to Nil — can your dream XII go 28-0?">
+<meta property="og:description" content="Draft the ultimate XII from every Ryder & Presidents Cup, then see if your dream team can win all 28 matches and go to nil.">
+<meta property="og:image" content="https://win-to-nil.com/win-to-nil-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Win to Nil — can your dream XII go 28-0?">
+<meta name="twitter:description" content="Draft the ultimate XII from every Ryder & Presidents Cup and chase a clean 28-0.">
+<meta name="twitter:image" content="https://win-to-nil.com/win-to-nil-preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1714; --panel:#0F221B; --panel2:#13291F; --line:rgba(203,168,92,0.18);
+    --brass:#CBA85C; --brass-hi:#E9D29A; --bone:#ECE7DA; --muted:#8AA096;
+    --usa:#D8313F; --eur:#3B7BE0; --int:#A974E0;
+    --win:#5FC98A; --ok:#3FA9A0; --warn:#E0A94B; --bad:#D8504E;
+    --disp:"Saira Condensed",Impact,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ink);color:var(--bone);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  body{min-height:100vh;background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(203,168,92,0.07), transparent 60%),
+    radial-gradient(900px 500px at 50% 120%, rgba(59,123,224,0.05), transparent 60%),
+    var(--ink);}
+  .wrap{max-width:980px;margin:0 auto;padding:22px 18px 60px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .scr{display:none}
+  .scr.on{display:block;animation:fade .5s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ---------- TITLE ---------- */
+  .hero{padding:46px 4px 18px;text-align:center}
+  .kick{font-family:var(--mono);font-size:11px;letter-spacing:.4em;color:var(--muted);text-transform:uppercase}
+  h1{font-family:var(--disp);font-weight:800;line-height:.86;letter-spacing:.01em;
+     font-size:clamp(64px,17vw,150px);margin:8px 0 2px;
+     background:linear-gradient(180deg,var(--brass-hi),var(--brass) 55%,#9d7f3e);
+     -webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase}
+  .sub{max-width:580px;margin:14px auto 0;color:#c7d2cb;font-size:15px;line-height:1.6}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:30px 0}
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto}
+  .how .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .how .n{font-family:var(--disp);font-size:30px;color:var(--brass);line-height:1}
+  .how p{font-size:12.5px;color:#bccabf;margin-top:6px;line-height:1.45}
+  .start{text-align:center;margin-top:34px}
+  .start .q{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .toggle{display:inline-flex;align-items:center;gap:11px;margin-top:22px;cursor:pointer;color:var(--muted);font-size:13px;user-select:none;padding:4px}
+  .toggle:focus-visible{outline:2px solid var(--brass);outline-offset:2px;border-radius:10px}
+  .tg-box{width:42px;height:23px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);position:relative;transition:background .2s,border-color .2s;flex:none}
+  .tg-knob{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--muted);transition:transform .2s,background .2s}
+  .toggle.on{color:var(--bone)}
+  .toggle.on .tg-box{background:rgba(203,168,92,.25);border-color:var(--brass)}
+  .toggle.on .tg-knob{transform:translateX(19px);background:var(--brass-hi)}
+
+  /* ---------- DRAFT ---------- */
+  .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .topbar .who{font-family:var(--disp);font-size:34px;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bone)}
+  .meta{display:flex;gap:18px;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .meta b{color:var(--bone);font-weight:700}
+  .pbar{height:6px;border-radius:6px;background:var(--panel2);overflow:hidden;margin-bottom:22px}
+  .pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--brass),var(--brass-hi));transition:width .4s}
+  .stage{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+  .panelbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .reelhead{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-align:center}
+  .reel{position:relative;height:108px;margin:14px auto 0;border-radius:12px;overflow:hidden;
+        background:linear-gradient(180deg,#06120e,#0c1f18);border:1px solid var(--line)}
+  .reel::before,.reel::after{content:"";position:absolute;left:0;right:0;height:36px;z-index:3;pointer-events:none}
+  .reel::before{top:0;background:linear-gradient(180deg,#0a1714,transparent)}
+  .reel::after{bottom:0;background:linear-gradient(0deg,#0a1714,transparent)}
+  .reelwin{position:absolute;left:8px;right:8px;top:50%;height:54px;transform:translateY(-50%);
+           border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);z-index:2;pointer-events:none;
+           box-shadow:0 0 22px -6px var(--brass) inset}
+  .strip{position:absolute;left:0;right:0;top:0;will-change:transform}
+  .cell{height:54px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--disp);
+        font-size:30px;font-weight:700;color:#5f7268;letter-spacing:.04em}
+  .cell .yv{font-family:var(--mono);font-size:11px;color:#465a51;letter-spacing:.12em;text-transform:uppercase}
+  .venue{text-align:center;margin-top:12px;min-height:34px}
+  .venue .yy{font-family:var(--disp);font-size:40px;color:var(--brass-hi);line-height:1}
+  .venue .vv{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .venue .won{font-size:11px;color:#7e9388;margin-top:4px;font-family:var(--mono)}
+  .btn{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-weight:700;border:none;cursor:pointer;
+       border-radius:11px;padding:14px 20px;font-size:18px;transition:transform .12s,filter .2s;color:#0b1410}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
+  .btn.gold{background:linear-gradient(180deg,var(--brass-hi),var(--brass));width:100%;margin-top:16px;
+            box-shadow:0 12px 28px -14px var(--brass)}
+  .start .btn.gold{width:auto;display:inline-block;padding:16px 46px;font-size:23px;margin-top:0}
+  .btn.gold:hover{filter:brightness(1.06)}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:13px;padding:9px 14px;border-radius:9px}
+  .btn.ghost:hover{color:var(--bone);border-color:var(--brass)}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
+  .options{margin-top:6px}
+  .opthint{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;margin:18px 0 10px}
+  .optrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--panel2);
+          border:1px solid var(--line);border-radius:11px;padding:11px 13px;margin-bottom:8px;cursor:pointer;
+          transition:border-color .15s,transform .12s,background .15s}
+  .optrow:hover{border-color:var(--brass);transform:translateX(3px)}
+  .optrow:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+  .sgbadge{font-family:var(--mono);font-weight:700;font-size:15px;min-width:46px;text-align:center;padding:5px 0;border-radius:7px;
+           background:#0a1814;border:1px solid var(--line)}
+  .opt-nm{font-weight:600;font-size:15px}
+  .opt-meta{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .chip{padding:1px 7px;border-radius:999px;border:1px solid var(--line)}
+  .chip.est{color:var(--warn);border-color:rgba(224,169,75,.4)}
+  .chip.eur{color:#9cc0ff;border-color:rgba(59,123,224,.45)}
+  .chip.usa{color:#ff9da6;border-color:rgba(216,49,63,.45)}
+  .sidedot{display:inline-block;width:8px;height:8px;border-radius:50%;flex:none}
+  .sd-eur{background:var(--eur)}.sd-usa{background:var(--usa)}.sd-int{background:var(--int)}
+  .evt{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px;border:1px solid var(--line)}
+  .evt.rc{color:var(--brass-hi);border-color:rgba(203,168,92,.45)}
+  .evt.pc{color:var(--int);border-color:rgba(169,116,224,.5)}
+  .team{font-family:var(--disp);font-size:clamp(20px,5.5vw,32px);line-height:1;text-transform:uppercase;letter-spacing:.03em;font-weight:700;margin:1px 0 5px}
+  .respin{display:flex;justify-content:center;margin-top:6px}
+  /* roster rail */
+  .rail h3{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .rail h3 span{color:var(--bone)}
+  .slot{display:flex;align-items:center;gap:9px;padding:7px 4px;border-bottom:1px solid rgba(203,168,92,.08);font-size:13.5px}
+  .slot .ix{font-family:var(--mono);font-size:11px;color:var(--brass);width:20px}
+  .slot .sn{flex:1}.slot .sn small{display:block;color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+  .slot .sv{font-family:var(--mono);font-size:12px;color:#bccabf}
+  .slot.empty{color:#3c4f47}.slot.empty .ix{color:#3c4f47}
+
+  /* ---------- RESULT ---------- */
+  .verdict{text-align:center;padding:18px 0 6px}
+  .vtag{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+  .score{font-family:var(--disp);font-weight:800;font-size:clamp(40px,10vw,82px);line-height:1;margin-top:6px;letter-spacing:.01em}
+  .score .me{color:var(--bone)}.score .sep{color:var(--brass);margin:0 .12em}.score .op{color:#5f7268}
+  .vline{margin-top:12px;font-size:15px;color:#c7d2cb;max-width:560px;margin-left:auto;margin-right:auto}
+  .tonil{font-family:var(--disp);font-size:clamp(48px,12vw,96px);color:var(--win);text-transform:uppercase;line-height:.9;
+         text-shadow:0 0 40px rgba(95,201,138,.4)}
+  .statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:24px auto 0;max-width:420px}
+  @media(max-width:640px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px;text-align:center}
+  .stat .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .stat .val{font-family:var(--disp);font-size:30px;margin-top:5px;color:var(--brass-hi);line-height:1}
+  .stat .val.sm{font-size:19px}
+  .wallsec{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:6px}
+  .wallsec h3{font-family:var(--disp);font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
+  .wallsec p.note{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .sessions{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:16px}
+  @media(max-width:640px){.sessions{grid-template-columns:1fr}}
+  .sess .sh{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .pips{display:flex;flex-wrap:wrap;gap:7px}
+  .pip{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+       font-family:var(--mono);font-size:9px;color:#08120e;font-weight:700;cursor:default;position:relative;border:1px solid rgba(0,0,0,.25)}
+  .singles .pip{width:34px;height:34px}
+  .tip{display:none;position:absolute;bottom:120%;left:50%;transform:translateX(-50%);z-index:10;
+       background:#05100c;border:1px solid var(--brass);border-radius:8px;padding:8px 10px;width:178px;
+       font-family:var(--body);color:var(--bone);font-size:11px;line-height:1.4;text-align:left;box-shadow:0 10px 30px -10px #000}
+  .pip:hover .tip,.pip:focus .tip{display:block}
+  .tip b{color:var(--brass-hi)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .feedback{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  @media(max-width:640px){.feedback{grid-template-columns:1fr}}
+  .fb{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px}
+  .fb .lab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .fb .big{font-family:var(--disp);font-size:24px;margin-top:4px}
+  .fb.good .big{color:var(--win)}.fb.bad .big{color:var(--bad)}
+  .fb small{display:block;color:#bccabf;font-size:12px;margin-top:4px;line-height:1.4}
+  .rosterfull{margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .rosterfull h3{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .actions{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+  .footnote{text-align:center;font-size:11.5px;color:#5f7268;margin-top:28px;line-height:1.6;max-width:660px;margin-left:auto;margin-right:auto}
+  .footnote .chip{font-family:var(--mono)}
+  .tipwrap{text-align:center;margin-top:26px}
+  .tipjar{display:inline-flex;align-items:center;gap:12px;padding:11px 18px 12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);text-decoration:none;text-align:left;transition:border-color .2s,transform .12s}
+  .tipjar:hover{border-color:var(--brass);transform:translateY(-1px)}
+  .tipjar:active{transform:translateY(0)}
+  .tipjar .flag{color:var(--brass);flex:none}
+  .tipjar b{font-family:var(--disp);font-size:18px;letter-spacing:.03em;color:var(--brass-hi);text-transform:uppercase;display:block;line-height:1.05}
+  .tipjar small{display:block;color:var(--muted);font-size:12px;margin-top:3px;max-width:240px}
+  /* ---- play / result ---- */
+  .vtag.goldtag{color:var(--win);text-shadow:0 0 24px rgba(95,201,138,.4)}
+  .vsub{display:flex;justify-content:center;gap:clamp(40px,16vw,120px);font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .runbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .runbtns .btn{width:auto;padding:12px 22px;font-size:14px}
+  .pip.pw{background:var(--win);color:#08120e}
+  .pip.pl{background:var(--bad);color:#fff}
+  .pip{transition:transform .12s ease}
+  .verdict.flash .score,.wallsec.flash{animation:simflash .9s ease-out}
+  @keyframes simflash{0%{transform:scale(1)}35%{transform:scale(1.08)}100%{transform:scale(1)}}
+  .stat .den{font-size:15px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== TITLE ===== -->
+  <section class="scr on" id="scr-title">
+    <div class="hero">
+      <div class="kick">The team-golf undefeated challenge</div>
+      <h1>Win to Nil</h1>
+      <p class="sub">Going 82-0 in a season is the basketball dream. This is its golf cousin: draft the ultimate XII from every Ryder Cup and Presidents Cup since 1991 — Europe, USA and the Internationals all in play — then play the Cup out and see if your dream team can win all <b>28</b> matches and go to nil.</p>
+    </div>
+    <div class="rule"></div>
+    <div class="how">
+      <div class="step"><div class="n">01</div><p>The reel lands on one team from one Cup — say 2006 Europe. Draft anyone who played for them.</p></div>
+      <div class="step"><div class="n">02</div><p>Twelve picks from twelve team-years. Every player is rated out of 100.</p></div>
+      <div class="step"><div class="n">03</div><p>Your XII plays out all 28 matches. Win the lot and you've gone to nil.</p></div>
+    </div>
+    <div class="start">
+      <div class="q">Both sides on the board</div>
+      <button class="btn gold" id="startBtn">Start the draft</button>
+      <div class="toggle" id="hideToggle" role="switch" aria-checked="false" tabindex="0">
+        <span class="tg-box"><span class="tg-knob"></span></span>
+        <span class="tg-label">Blind draft — hide ratings until the XII is set</span>
+      </div>
+      <div class="toggle" id="uniqueToggle" role="switch" aria-checked="false" tabindex="0">
+        <span class="tg-box"><span class="tg-knob"></span></span>
+        <span class="tg-label">One of each — a player can't be picked in more than one year (no two Tigers)</span>
+      </div>
+      <div class="toggle" id="respinToggle" role="switch" aria-checked="false" tabindex="0">
+        <span class="tg-box"><span class="tg-knob"></span></span>
+        <span class="tg-label">One re-spin — allow a single re-spin to redo a pick</span>
+      </div>
+    </div>
+    <div class="tipwrap">
+      <a class="tipjar" href="https://ko-fi.com/wintonil" target="_blank" rel="noopener">
+        <svg class="flag" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M7 3v18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M7 4l11 3-11 3z" fill="currentColor"/></svg>
+        <span><b>Tip the caddy</b><small>Free to play. If it gave you a laugh, slip the caddy a few quid.</small></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== DRAFT ===== -->
+  <section class="scr" id="scr-draft">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">The draft</div>
+        <div class="who">Your XII</div>
+      </div>
+      <div class="meta">
+        <span>Pick <b id="d-pick">1</b>/12</span>
+        <span>Re-spins <b id="d-skips">0</b></span>
+      </div>
+    </div>
+    <div class="pbar"><i id="d-prog" style="width:0%"></i></div>
+
+    <div class="stage">
+      <div class="panelbox">
+        <div class="reelhead">Spin the years</div>
+        <div class="reel"><div class="reelwin"></div><div class="strip" id="strip"></div></div>
+        <div class="venue" id="venue"></div>
+        <button class="btn gold" id="spinBtn">Spin the reel</button>
+        <div class="options" id="options"></div>
+      </div>
+      <div class="rail panelbox">
+        <h3 id="railhead">Your XII</h3>
+        <div id="roster"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section class="scr" id="scr-result">
+    <div class="eyebrow" style="text-align:center">Full time</div>
+    <div class="verdict" id="verdict"></div>
+    <div class="runbtns">
+      <button class="btn gold" id="runAgain">Run it again</button>
+    </div>
+    <div class="statgrid" id="stats"></div>
+    <div class="wallsec">
+      <h3>How it played out</h3>
+      <p class="note">All 28 matches from this run — <b style="color:var(--win)">green won</b>, <b style="color:var(--bad)">red lost</b>. Tap a tile to see the matchup.</p>
+      <div class="sessions" id="wall"></div>
+      <div class="legend">
+        <span><i style="background:var(--win)"></i>Point won</span>
+        <span><i style="background:var(--bad)"></i>Point lost</span>
+      </div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+    <div class="rosterfull" id="rosterfull"></div>
+    <div class="actions">
+      <button class="btn gold" style="width:auto" id="againBtn">Draft a new XII</button>
+      <button class="btn ghost" id="homeBtn">Back to start</button>
+    </div>
+    <div class="tipwrap">
+      <a class="tipjar" href="https://ko-fi.com/wintonil" target="_blank" rel="noopener">
+        <svg class="flag" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M7 3v18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M7 4l11 3-11 3z" fill="currentColor"/></svg>
+        <span><b>Tip the caddy</b><small>Enjoyed the round? Buy the caddy a pint.</small></span>
+      </a>
+    </div>
+    <p class="footnote">Each rating out of 100 reflects how good a player was the <b>season that Cup was played</b>, so the same name is worth more in a year he was actually flying — Tiger in 2000 tops the scale at 100. The ratings are our own estimates of form, not official strokes-gained data: real strokes gained only goes back to 2004 (pre-2004 picks are flagged <span class="chip est">EST</span>) and doesn't cover every tour, so treat them as a designed power level rather than a measured stat. Each match is then played out for real — which is why a clean 28–0 is so rare that, just like going 82-0 in the NBA, nobody has ever actually done it.</p>
+  </section>
+
+</div>
+
+<script>
+const YEARS = [
+  {y:1991,venue:"Kiawah Island · Ocean Course",won:"USA won 14½–13½",event:"RC"},
+  {y:1994,venue:"Robert Trent Jones · Virginia",won:"USA won 20–12",event:"PC"},
+  {y:1995,venue:"Oak Hill · New York",won:"Europe won 14½–13½",event:"RC"},
+  {y:1996,venue:"Robert Trent Jones · Virginia",won:"USA won 16½–15½",event:"PC"},
+  {y:1998,venue:"Royal Melbourne · Australia",won:"Internationals won 20½–11½",event:"PC"},
+  {y:1999,venue:"The Country Club · Brookline",won:"USA won 14½–13½",event:"RC"},
+  {y:2000,venue:"Robert Trent Jones · Virginia",won:"USA won 21½–10½",event:"PC"},
+  {y:2002,venue:"The Belfry · England",won:"Europe won 15½–12½",event:"RC"},
+  {y:2003,venue:"Fancourt · South Africa",won:"Tied 17–17",event:"PC"},
+  {y:2004,venue:"Oakland Hills · Michigan",won:"Europe won 18½–9½",event:"RC"},
+  {y:2005,venue:"Robert Trent Jones · Virginia",won:"USA won 18½–15½",event:"PC"},
+  {y:2006,venue:"The K Club · Ireland",won:"Europe won 18½–9½",event:"RC"},
+  {y:2007,venue:"Royal Montreal · Canada",won:"USA won 19½–14½",event:"PC"},
+  {y:2008,venue:"Valhalla · Kentucky",won:"USA won 16½–11½",event:"RC"},
+  {y:2009,venue:"Harding Park · San Francisco",won:"USA won 19½–14½",event:"PC"},
+  {y:2010,venue:"Celtic Manor · Wales",won:"Europe won 14½–13½",event:"RC"},
+  {y:2011,venue:"Royal Melbourne · Australia",won:"USA won 19–15",event:"PC"},
+  {y:2012,venue:"Medinah · Illinois",won:"Europe won 14½–13½",event:"RC"},
+  {y:2013,venue:"Muirfield Village · Ohio",won:"USA won 18½–15½",event:"PC"},
+  {y:2014,venue:"Gleneagles · Scotland",won:"Europe won 16½–11½",event:"RC"},
+  {y:2015,venue:"Jack Nicklaus GC · South Korea",won:"USA won 15½–14½",event:"PC"},
+  {y:2016,venue:"Hazeltine · Minnesota",won:"USA won 17–11",event:"RC"},
+  {y:2017,venue:"Liberty National · New Jersey",won:"USA won 19–11",event:"PC"},
+  {y:2018,venue:"Le Golf National · Paris",won:"Europe won 17½–10½",event:"RC"},
+  {y:2019,venue:"Royal Melbourne · Australia",won:"USA won 16–14",event:"PC"},
+  {y:2021,venue:"Whistling Straits · Wisconsin",won:"USA won 19–9",event:"RC"},
+  {y:2022,venue:"Quail Hollow · North Carolina",won:"USA won 17½–12½",event:"PC"},
+  {y:2023,venue:"Marco Simone · Rome",won:"Europe won 16½–11½",event:"RC"},
+  {y:2024,venue:"Royal Montreal · Canada",won:"USA won 18½–11½",event:"PC"},
+  {y:2025,venue:"Bethpage Black · New York",won:"Europe won 15–13",event:"RC"},
+];
+// type: BALL ball-striker (foursomes) · BIRD birdie-maker (fourball) · PUTT clutch putter · MATCH match-play · ALL all-rounder
+// sg = strokes gained total per round for THAT Ryder Cup season (modern approx; est = pre-2004 estimate)
+const P=(y,name,sg,type,est=false)=>({y,name,sg,type,est});
+const POOL_EUR=[
+  P(1991,"Nick Faldo",2.4,"BALL",1),P(1991,"Ian Woosnam",2.3,"ALL",1),P(1991,"Seve Ballesteros",2.2,"MATCH",1),P(1991,"José María Olazábal",1.9,"ALL",1),P(1991,"Bernhard Langer",1.9,"ALL",1),P(1991,"Colin Montgomerie",1.5,"ALL",1),P(1991,"Sam Torrance",1.4,"PUTT",1),P(1991,"Mark James",1.3,"ALL",1),P(1991,"David Gilford",1.2,"ALL",1),P(1991,"Paul Broadhurst",1.2,"ALL",1),P(1991,"David Feherty",1.2,"ALL",1),P(1991,"Steven Richardson",1.1,"ALL",1),
+  P(1995,"Colin Montgomerie",2.2,"ALL",1),P(1995,"Bernhard Langer",2.0,"ALL",1),P(1995,"Nick Faldo",2.0,"BALL",1),P(1995,"Ian Woosnam",1.7,"ALL",1),P(1995,"Constantino Rocca",1.5,"ALL",1),P(1995,"Seve Ballesteros",1.5,"MATCH",1),P(1995,"Sam Torrance",1.3,"PUTT",1),P(1995,"Howard Clark",1.3,"ALL",1),P(1995,"Mark James",1.3,"ALL",1),P(1995,"Per-Ulrik Johansson",1.3,"ALL",1),P(1995,"David Gilford",1.2,"ALL",1),P(1995,"Philip Walton",1.2,"ALL",1),
+  P(1999,"Colin Montgomerie",2.2,"ALL",1),P(1999,"Lee Westwood",2.0,"BALL",1),P(1999,"José María Olazábal",2.0,"ALL",1),P(1999,"Sergio García",1.8,"BALL",1),P(1999,"Paul Lawrie",1.7,"ALL",1),P(1999,"Darren Clarke",1.7,"ALL",1),P(1999,"Jesper Parnevik",1.6,"ALL",1),P(1999,"Pádraig Harrington",1.6,"ALL",1),P(1999,"Miguel Ángel Jiménez",1.5,"ALL",1),P(1999,"Jarmo Sandelin",1.1,"ALL",1),P(1999,"Andrew Coltart",1.1,"ALL",1),P(1999,"Jean van de Velde",1.1,"ALL",1),
+  P(2002,"Sergio García",2.0,"BALL",1),P(2002,"Colin Montgomerie",1.9,"ALL",1),P(2002,"Pádraig Harrington",1.9,"ALL",1),P(2002,"Darren Clarke",1.8,"ALL",1),P(2002,"Thomas Bjørn",1.6,"ALL",1),P(2002,"Bernhard Langer",1.6,"ALL",1),P(2002,"Jesper Parnevik",1.4,"ALL",1),P(2002,"Paul McGinley",1.3,"PUTT",1),P(2002,"Lee Westwood",1.3,"BALL",1),P(2002,"Phillip Price",1.3,"ALL",1),P(2002,"Niclas Fasth",1.3,"ALL",1),P(2002,"Pierre Fulke",1.2,"ALL",1),
+  P(2004,"Sergio García",1.9,"BALL"),P(2004,"Pádraig Harrington",1.8,"ALL"),P(2004,"Luke Donald",1.7,"PUTT"),P(2004,"Miguel Ángel Jiménez",1.7,"ALL"),P(2004,"Paul Casey",1.7,"BALL"),P(2004,"Darren Clarke",1.7,"ALL"),P(2004,"Lee Westwood",1.5,"BALL"),P(2004,"Colin Montgomerie",1.5,"ALL"),P(2004,"Ian Poulter",1.5,"MATCH"),P(2004,"David Howell",1.4,"ALL"),P(2004,"Thomas Levet",1.4,"ALL"),P(2004,"Paul McGinley",1.4,"PUTT"),
+  P(2006,"Paul Casey",2.0,"BALL"),P(2006,"Sergio García",1.9,"BALL"),P(2006,"Henrik Stenson",1.9,"BALL"),P(2006,"Pádraig Harrington",1.8,"ALL"),P(2006,"Luke Donald",1.8,"PUTT"),P(2006,"Colin Montgomerie",1.7,"ALL"),P(2006,"David Howell",1.7,"ALL"),P(2006,"José María Olazábal",1.7,"ALL"),P(2006,"Lee Westwood",1.6,"BALL"),P(2006,"Robert Karlsson",1.6,"BALL"),P(2006,"Paul McGinley",1.4,"PUTT"),P(2006,"Darren Clarke",1.4,"ALL"),
+  P(2008,"Pádraig Harrington",2.1,"ALL"),P(2008,"Sergio García",2.0,"BALL"),P(2008,"Lee Westwood",2.0,"BALL"),P(2008,"Henrik Stenson",2.0,"BALL"),P(2008,"Paul Casey",1.9,"BALL"),P(2008,"Robert Karlsson",1.8,"BALL"),P(2008,"Ian Poulter",1.7,"MATCH"),P(2008,"Justin Rose",1.6,"ALL"),P(2008,"Graeme McDowell",1.6,"ALL"),P(2008,"Miguel Ángel Jiménez",1.6,"ALL"),P(2008,"Søren Hansen",1.4,"ALL"),P(2008,"Oliver Wilson",1.3,"ALL"),
+  P(2010,"Lee Westwood",2.3,"BALL"),P(2010,"Martin Kaymer",2.1,"ALL"),P(2010,"Graeme McDowell",2.1,"ALL"),P(2010,"Luke Donald",2.0,"PUTT"),P(2010,"Rory McIlroy",1.9,"ALL"),P(2010,"Justin Rose",1.7,"ALL"),P(2010,"Ian Poulter",1.7,"MATCH"),P(2010,"Ross Fisher",1.6,"BALL"),P(2010,"Pádraig Harrington",1.6,"ALL"),P(2010,"Francesco Molinari",1.6,"BALL"),P(2010,"Miguel Ángel Jiménez",1.6,"ALL"),P(2010,"Edoardo Molinari",1.5,"ALL"),
+  P(2012,"Rory McIlroy",2.6,"ALL"),P(2012,"Luke Donald",2.2,"PUTT"),P(2012,"Justin Rose",2.0,"ALL"),P(2012,"Ian Poulter",1.9,"MATCH"),P(2012,"Lee Westwood",1.9,"BALL"),P(2012,"Sergio García",1.8,"BALL"),P(2012,"Graeme McDowell",1.8,"ALL"),P(2012,"Francesco Molinari",1.7,"BALL"),P(2012,"Paul Lawrie",1.6,"ALL"),P(2012,"Peter Hanson",1.6,"ALL"),P(2012,"Nicolas Colsaerts",1.6,"BALL"),P(2012,"Martin Kaymer",1.4,"ALL"),
+  P(2014,"Rory McIlroy",2.7,"ALL"),P(2014,"Henrik Stenson",2.3,"BALL"),P(2014,"Martin Kaymer",2.2,"ALL"),P(2014,"Justin Rose",2.1,"ALL"),P(2014,"Sergio García",2.0,"BALL"),P(2014,"Graeme McDowell",1.9,"ALL"),P(2014,"Victor Dubuisson",1.7,"BALL"),P(2014,"Lee Westwood",1.7,"BALL"),P(2014,"Jamie Donaldson",1.6,"ALL"),P(2014,"Thomas Bjørn",1.6,"ALL"),P(2014,"Ian Poulter",1.5,"MATCH"),P(2014,"Stephen Gallacher",1.4,"ALL"),
+  P(2016,"Henrik Stenson",2.5,"BALL"),P(2016,"Rory McIlroy",2.3,"ALL"),P(2016,"Danny Willett",2.0,"ALL"),P(2016,"Justin Rose",1.9,"ALL"),P(2016,"Sergio García",1.8,"BALL"),P(2016,"Thomas Pieters",1.8,"BALL"),P(2016,"Rafa Cabrera Bello",1.6,"ALL"),P(2016,"Matt Fitzpatrick",1.6,"ALL"),P(2016,"Martin Kaymer",1.5,"ALL"),P(2016,"Chris Wood",1.5,"ALL"),P(2016,"Andy Sullivan",1.5,"ALL"),P(2016,"Lee Westwood",1.5,"BALL"),
+  P(2018,"Francesco Molinari",2.4,"BALL"),P(2018,"Justin Rose",2.3,"ALL"),P(2018,"Rory McIlroy",2.1,"ALL"),P(2018,"Jon Rahm",2.0,"BIRD"),P(2018,"Tommy Fleetwood",2.0,"BALL"),P(2018,"Paul Casey",1.8,"BALL"),P(2018,"Alex Norén",1.7,"ALL"),P(2018,"Tyrrell Hatton",1.6,"ALL"),P(2018,"Ian Poulter",1.6,"MATCH"),P(2018,"Thorbjørn Olesen",1.5,"ALL"),P(2018,"Henrik Stenson",1.5,"BALL"),P(2018,"Sergio García",1.3,"BALL"),
+  P(2021,"Jon Rahm",2.5,"BIRD"),P(2021,"Rory McIlroy",1.9,"ALL"),P(2021,"Viktor Hovland",1.8,"BALL"),P(2021,"Tyrrell Hatton",1.8,"ALL"),P(2021,"Matt Fitzpatrick",1.7,"ALL"),P(2021,"Shane Lowry",1.7,"PUTT"),P(2021,"Paul Casey",1.7,"BALL"),P(2021,"Lee Westwood",1.6,"BALL"),P(2021,"Tommy Fleetwood",1.6,"BALL"),P(2021,"Bernd Wiesberger",1.5,"ALL"),P(2021,"Sergio García",1.5,"BALL"),P(2021,"Ian Poulter",1.5,"MATCH"),
+  P(2023,"Jon Rahm",2.4,"BIRD"),P(2023,"Rory McIlroy",2.3,"ALL"),P(2023,"Viktor Hovland",2.3,"BALL"),P(2023,"Tommy Fleetwood",1.9,"BALL"),P(2023,"Ludvig Åberg",1.9,"BALL"),P(2023,"Matt Fitzpatrick",1.8,"ALL"),P(2023,"Sepp Straka",1.8,"ALL"),P(2023,"Tyrrell Hatton",1.7,"ALL"),P(2023,"Shane Lowry",1.7,"PUTT"),P(2023,"Nicolai Højgaard",1.6,"BALL"),P(2023,"Robert MacIntyre",1.6,"ALL"),P(2023,"Justin Rose",1.5,"ALL"),
+  P(2025,"Rory McIlroy",2.5,"ALL"),P(2025,"Jon Rahm",2.2,"BIRD"),P(2025,"Tommy Fleetwood",2.2,"BALL"),P(2025,"Ludvig Åberg",2.0,"BALL"),P(2025,"Viktor Hovland",2.0,"BALL"),P(2025,"Sepp Straka",2.0,"ALL"),P(2025,"Justin Rose",1.9,"ALL"),P(2025,"Robert MacIntyre",1.9,"ALL"),P(2025,"Tyrrell Hatton",1.8,"ALL"),P(2025,"Shane Lowry",1.7,"PUTT"),P(2025,"Rasmus Højgaard",1.6,"BALL"),P(2025,"Matt Fitzpatrick",1.6,"ALL"),
+];
+const POOL_USA=[
+  P(1991,"Fred Couples",2.2,"BALL",1),P(1991,"Paul Azinger",1.9,"ALL",1),P(1991,"Payne Stewart",1.8,"ALL",1),P(1991,"Corey Pavin",1.8,"MATCH",1),P(1991,"Hale Irwin",1.7,"ALL",1),P(1991,"Raymond Floyd",1.6,"ALL",1),P(1991,"Lanny Wadkins",1.6,"MATCH",1),P(1991,"Mark O'Meara",1.6,"ALL",1),P(1991,"Mark Calcavecchia",1.5,"ALL",1),P(1991,"Wayne Levi",1.4,"ALL",1),P(1991,"Steve Pate",1.4,"ALL",1),P(1991,"Chip Beck",1.4,"ALL",1),
+  P(1995,"Corey Pavin",2.0,"MATCH",1),P(1995,"Davis Love III",1.9,"BALL",1),P(1995,"Phil Mickelson",1.9,"BIRD",1),P(1995,"Fred Couples",1.8,"BALL",1),P(1995,"Tom Lehman",1.8,"ALL",1),P(1995,"Ben Crenshaw",1.6,"PUTT",1),P(1995,"Jeff Maggert",1.5,"ALL",1),P(1995,"Loren Roberts",1.5,"PUTT",1),P(1995,"Peter Jacobsen",1.5,"ALL",1),P(1995,"Brad Faxon",1.5,"PUTT",1),P(1995,"Jay Haas",1.4,"ALL",1),P(1995,"Curtis Strange",1.3,"ALL",1),
+  P(1999,"Tiger Woods",3.0,"ALL",1),P(1999,"David Duval",2.6,"ALL",1),P(1999,"Phil Mickelson",2.1,"BIRD",1),P(1999,"Payne Stewart",1.9,"ALL",1),P(1999,"Davis Love III",1.9,"BALL",1),P(1999,"Jim Furyk",1.8,"ALL",1),P(1999,"Hal Sutton",1.7,"ALL",1),P(1999,"Justin Leonard",1.7,"PUTT",1),P(1999,"Tom Lehman",1.6,"ALL",1),P(1999,"Mark O'Meara",1.6,"ALL",1),P(1999,"Jeff Maggert",1.5,"ALL",1),P(1999,"Steve Pate",1.3,"ALL",1),
+  P(2002,"Tiger Woods",3.0,"ALL",1),P(2002,"Phil Mickelson",2.2,"BIRD",1),P(2002,"Davis Love III",2.0,"BALL",1),P(2002,"David Toms",2.0,"ALL",1),P(2002,"Jim Furyk",1.9,"ALL",1),P(2002,"Stewart Cink",1.6,"ALL",1),P(2002,"Hal Sutton",1.6,"ALL",1),P(2002,"Mark Calcavecchia",1.5,"ALL",1),P(2002,"Scott Hoch",1.5,"ALL",1),P(2002,"Scott Verplank",1.4,"ALL",1),P(2002,"Paul Azinger",1.4,"ALL",1),P(2002,"David Duval",1.2,"ALL",1),
+  P(2004,"Phil Mickelson",2.4,"BIRD"),P(2004,"Tiger Woods",2.1,"ALL"),P(2004,"Jim Furyk",1.9,"ALL"),P(2004,"David Toms",1.9,"ALL"),P(2004,"Kenny Perry",1.9,"ALL"),P(2004,"Davis Love III",1.8,"BALL"),P(2004,"Chris DiMarco",1.7,"ALL"),P(2004,"Chad Campbell",1.6,"ALL"),P(2004,"Stewart Cink",1.6,"ALL"),P(2004,"Fred Funk",1.5,"ALL"),P(2004,"Jay Haas",1.5,"ALL"),P(2004,"Chris Riley",1.4,"ALL"),
+  P(2006,"Tiger Woods",3.0,"ALL"),P(2006,"Phil Mickelson",2.2,"BIRD"),P(2006,"Jim Furyk",2.1,"ALL"),P(2006,"Chris DiMarco",1.8,"ALL"),P(2006,"David Toms",1.7,"ALL"),P(2006,"Chad Campbell",1.6,"ALL"),P(2006,"Stewart Cink",1.6,"ALL"),P(2006,"Zach Johnson",1.6,"ALL"),P(2006,"Scott Verplank",1.6,"ALL"),P(2006,"J.J. Henry",1.3,"ALL"),P(2006,"Vaughn Taylor",1.3,"ALL"),P(2006,"Brett Wetterich",1.3,"ALL"),
+  P(2008,"Kenny Perry",2.0,"ALL"),P(2008,"Anthony Kim",2.0,"BIRD"),P(2008,"Phil Mickelson",1.9,"BIRD"),P(2008,"Jim Furyk",1.8,"ALL"),P(2008,"Hunter Mahan",1.8,"ALL"),P(2008,"Steve Stricker",1.8,"PUTT"),P(2008,"Stewart Cink",1.7,"ALL"),P(2008,"J.B. Holmes",1.6,"BALL"),P(2008,"Justin Leonard",1.6,"PUTT"),P(2008,"Ben Curtis",1.5,"ALL"),P(2008,"Boo Weekley",1.5,"ALL"),P(2008,"Chad Campbell",1.5,"ALL"),
+  P(2010,"Jim Furyk",2.0,"ALL"),P(2010,"Steve Stricker",2.0,"PUTT"),P(2010,"Phil Mickelson",2.0,"BIRD"),P(2010,"Matt Kuchar",1.9,"ALL"),P(2010,"Hunter Mahan",1.8,"ALL"),P(2010,"Dustin Johnson",1.8,"BALL"),P(2010,"Bubba Watson",1.7,"BALL"),P(2010,"Zach Johnson",1.7,"ALL"),P(2010,"Stewart Cink",1.6,"ALL"),P(2010,"Tiger Woods",1.4,"ALL"),P(2010,"Rickie Fowler",1.4,"ALL"),P(2010,"Jeff Overton",1.4,"ALL"),
+  P(2012,"Tiger Woods",2.3,"ALL"),P(2012,"Brandt Snedeker",2.0,"PUTT"),P(2012,"Bubba Watson",1.9,"BALL"),P(2012,"Matt Kuchar",1.9,"ALL"),P(2012,"Jason Dufner",1.9,"ALL"),P(2012,"Jim Furyk",1.8,"ALL"),P(2012,"Dustin Johnson",1.8,"BALL"),P(2012,"Keegan Bradley",1.8,"ALL"),P(2012,"Webb Simpson",1.8,"ALL"),P(2012,"Phil Mickelson",1.7,"BIRD"),P(2012,"Zach Johnson",1.7,"ALL"),P(2012,"Steve Stricker",1.7,"PUTT"),
+  P(2014,"Bubba Watson",2.0,"BALL"),P(2014,"Rickie Fowler",1.9,"ALL"),P(2014,"Jim Furyk",1.9,"ALL"),P(2014,"Matt Kuchar",1.9,"ALL"),P(2014,"Jordan Spieth",1.8,"PUTT"),P(2014,"Jimmy Walker",1.8,"ALL"),P(2014,"Patrick Reed",1.7,"MATCH"),P(2014,"Zach Johnson",1.7,"ALL"),P(2014,"Hunter Mahan",1.7,"ALL"),P(2014,"Webb Simpson",1.6,"ALL"),P(2014,"Keegan Bradley",1.6,"ALL"),P(2014,"Phil Mickelson",1.3,"BIRD"),
+  P(2016,"Dustin Johnson",2.5,"BALL"),P(2016,"Jordan Spieth",2.1,"PUTT"),P(2016,"Brooks Koepka",1.8,"BALL"),P(2016,"Patrick Reed",1.8,"MATCH"),P(2016,"Rickie Fowler",1.7,"ALL"),P(2016,"Jimmy Walker",1.7,"ALL"),P(2016,"Brandt Snedeker",1.7,"PUTT"),P(2016,"J.B. Holmes",1.7,"BALL"),P(2016,"Zach Johnson",1.6,"ALL"),P(2016,"Ryan Moore",1.6,"ALL"),P(2016,"Phil Mickelson",1.6,"BIRD"),P(2016,"Matt Kuchar",1.6,"ALL"),
+  P(2018,"Dustin Johnson",2.3,"BALL"),P(2018,"Justin Thomas",2.2,"BIRD"),P(2018,"Bryson DeChambeau",2.1,"BALL"),P(2018,"Brooks Koepka",1.9,"BALL"),P(2018,"Tiger Woods",1.9,"ALL"),P(2018,"Tony Finau",1.9,"BALL"),P(2018,"Webb Simpson",1.9,"ALL"),P(2018,"Rickie Fowler",1.8,"ALL"),P(2018,"Bubba Watson",1.8,"BALL"),P(2018,"Patrick Reed",1.6,"MATCH"),P(2018,"Phil Mickelson",1.5,"BIRD"),P(2018,"Jordan Spieth",1.4,"PUTT"),
+  P(2021,"Patrick Cantlay",2.1,"ALL"),P(2021,"Collin Morikawa",2.1,"BALL"),P(2021,"Bryson DeChambeau",2.0,"BALL"),P(2021,"Justin Thomas",2.0,"BIRD"),P(2021,"Dustin Johnson",2.0,"BALL"),P(2021,"Xander Schauffele",1.9,"ALL"),P(2021,"Scottie Scheffler",1.8,"BALL"),P(2021,"Daniel Berger",1.8,"ALL"),P(2021,"Harris English",1.8,"ALL"),P(2021,"Jordan Spieth",1.7,"PUTT"),P(2021,"Brooks Koepka",1.7,"BALL"),P(2021,"Tony Finau",1.6,"BALL"),
+  P(2023,"Scottie Scheffler",2.3,"BALL"),P(2023,"Xander Schauffele",1.9,"ALL"),P(2023,"Patrick Cantlay",1.9,"ALL"),P(2023,"Wyndham Clark",1.9,"ALL"),P(2023,"Brooks Koepka",1.8,"BALL"),P(2023,"Max Homa",1.8,"ALL"),P(2023,"Collin Morikawa",1.8,"BALL"),P(2023,"Sam Burns",1.7,"ALL"),P(2023,"Brian Harman",1.6,"PUTT"),P(2023,"Rickie Fowler",1.6,"ALL"),P(2023,"Jordan Spieth",1.5,"PUTT"),P(2023,"Justin Thomas",1.2,"BIRD"),
+  P(2025,"Scottie Scheffler",2.8,"BALL"),P(2025,"Bryson DeChambeau",2.1,"BALL"),P(2025,"Russell Henley",2.0,"ALL"),P(2025,"Justin Thomas",2.0,"BIRD"),P(2025,"Collin Morikawa",1.9,"BALL"),P(2025,"Cameron Young",1.9,"BALL"),P(2025,"J.J. Spaun",1.9,"ALL"),P(2025,"Ben Griffin",1.9,"ALL"),P(2025,"Patrick Cantlay",1.8,"ALL"),P(2025,"Harris English",1.8,"ALL"),P(2025,"Xander Schauffele",1.7,"ALL"),P(2025,"Sam Burns",1.7,"PUTT"),
+  P(1994,"Fred Couples",2.2,"BALL",1),P(1994,"Davis Love III",1.9,"BALL",1),P(1994,"Corey Pavin",1.9,"MATCH",1),P(1994,"Phil Mickelson",1.8,"BIRD",1),P(1994,"Tom Lehman",1.7,"ALL",1),P(1994,"Hale Irwin",1.6,"ALL",1),P(1994,"Jeff Maggert",1.5,"ALL",1),P(1994,"Loren Roberts",1.5,"PUTT",1),P(1994,"Jay Haas",1.4,"ALL",1),P(1994,"John Huston",1.4,"ALL",1),P(1994,"Scott Hoch",1.4,"ALL",1),P(1994,"Jim Gallagher Jr.",1.3,"ALL",1),
+  P(1996,"Tom Lehman",2.0,"ALL",1),P(1996,"Phil Mickelson",2.0,"BIRD",1),P(1996,"Davis Love III",1.9,"BALL",1),P(1996,"Fred Couples",1.9,"BALL",1),P(1996,"Mark O'Meara",1.8,"ALL",1),P(1996,"David Duval",1.7,"ALL",1),P(1996,"Corey Pavin",1.6,"MATCH",1),P(1996,"Mark Brooks",1.6,"ALL",1),P(1996,"Steve Stricker",1.6,"PUTT",1),P(1996,"Justin Leonard",1.6,"PUTT",1),P(1996,"Scott Hoch",1.5,"ALL",1),P(1996,"Kenny Perry",1.4,"ALL",1),
+  P(1998,"Tiger Woods",2.6,"ALL",1),P(1998,"Mark O'Meara",2.4,"ALL",1),P(1998,"David Duval",2.3,"ALL",1),P(1998,"Phil Mickelson",2.0,"BIRD",1),P(1998,"Davis Love III",1.9,"BALL",1),P(1998,"Jim Furyk",1.8,"ALL",1),P(1998,"Justin Leonard",1.8,"PUTT",1),P(1998,"Lee Janzen",1.7,"ALL",1),P(1998,"Fred Couples",1.7,"BALL",1),P(1998,"Mark Calcavecchia",1.5,"ALL",1),P(1998,"Scott Hoch",1.5,"ALL",1),P(1998,"John Huston",1.5,"ALL",1),
+  P(2000,"Tiger Woods",3.2,"ALL",1),P(2000,"Phil Mickelson",2.3,"BIRD",1),P(2000,"David Duval",2.1,"ALL",1),P(2000,"Jim Furyk",1.9,"ALL",1),P(2000,"Davis Love III",1.9,"BALL",1),P(2000,"Hal Sutton",1.8,"ALL",1),P(2000,"Tom Lehman",1.6,"ALL",1),P(2000,"Stewart Cink",1.6,"ALL",1),P(2000,"Loren Roberts",1.5,"PUTT",1),P(2000,"Paul Azinger",1.5,"ALL",1),P(2000,"Kirk Triplett",1.4,"ALL",1),P(2000,"Notah Begay III",1.4,"ALL",1),
+  P(2003,"Tiger Woods",2.6,"ALL",1),P(2003,"Jim Furyk",2.2,"ALL",1),P(2003,"Davis Love III",2.0,"BALL",1),P(2003,"Kenny Perry",1.9,"ALL",1),P(2003,"David Toms",1.9,"ALL",1),P(2003,"Phil Mickelson",1.9,"BIRD",1),P(2003,"Chris DiMarco",1.7,"ALL",1),P(2003,"Justin Leonard",1.7,"PUTT",1),P(2003,"Fred Funk",1.5,"ALL",1),P(2003,"Jay Haas",1.5,"ALL",1),P(2003,"Charles Howell III",1.5,"ALL",1),P(2003,"Jerry Kelly",1.5,"ALL",1),
+  P(2005,"Tiger Woods",2.8,"ALL"),P(2005,"Phil Mickelson",2.3,"BIRD"),P(2005,"Jim Furyk",2.0,"ALL"),P(2005,"Chris DiMarco",1.8,"ALL"),P(2005,"David Toms",1.8,"ALL"),P(2005,"Davis Love III",1.7,"BALL"),P(2005,"Stewart Cink",1.7,"ALL"),P(2005,"Fred Funk",1.6,"ALL"),P(2005,"Kenny Perry",1.6,"ALL"),P(2005,"Scott Verplank",1.6,"ALL"),P(2005,"Justin Leonard",1.6,"PUTT"),P(2005,"Fred Couples",1.6,"BALL"),
+  P(2007,"Tiger Woods",3.0,"ALL"),P(2007,"Jim Furyk",2.1,"ALL"),P(2007,"Phil Mickelson",2.1,"BIRD"),P(2007,"Steve Stricker",1.9,"PUTT"),P(2007,"Zach Johnson",1.8,"ALL"),P(2007,"David Toms",1.7,"ALL"),P(2007,"Stewart Cink",1.7,"ALL"),P(2007,"Hunter Mahan",1.6,"ALL"),P(2007,"Scott Verplank",1.6,"ALL"),P(2007,"Charles Howell III",1.6,"ALL"),P(2007,"Lucas Glover",1.5,"ALL"),P(2007,"Woody Austin",1.5,"ALL"),
+  P(2009,"Tiger Woods",2.4,"ALL"),P(2009,"Steve Stricker",2.2,"PUTT"),P(2009,"Phil Mickelson",2.1,"BIRD"),P(2009,"Jim Furyk",1.9,"ALL"),P(2009,"Stewart Cink",1.8,"ALL"),P(2009,"Kenny Perry",1.8,"ALL"),P(2009,"Anthony Kim",1.8,"BIRD"),P(2009,"Hunter Mahan",1.8,"ALL"),P(2009,"Zach Johnson",1.7,"ALL"),P(2009,"Lucas Glover",1.7,"ALL"),P(2009,"Justin Leonard",1.6,"PUTT"),P(2009,"Sean O'Hair",1.6,"ALL"),
+  P(2011,"Steve Stricker",2.0,"PUTT"),P(2011,"Matt Kuchar",1.9,"ALL"),P(2011,"Dustin Johnson",1.9,"BALL"),P(2011,"Webb Simpson",1.9,"ALL"),P(2011,"Nick Watney",1.9,"ALL"),P(2011,"Phil Mickelson",1.9,"BIRD"),P(2011,"Jim Furyk",1.8,"ALL"),P(2011,"Bubba Watson",1.8,"BALL"),P(2011,"Hunter Mahan",1.8,"ALL"),P(2011,"Bill Haas",1.8,"ALL"),P(2011,"David Toms",1.6,"ALL"),P(2011,"Tiger Woods",1.4,"ALL"),
+  P(2013,"Tiger Woods",2.6,"ALL"),P(2013,"Phil Mickelson",2.1,"BIRD"),P(2013,"Matt Kuchar",1.9,"ALL"),P(2013,"Jason Dufner",1.9,"ALL"),P(2013,"Brandt Snedeker",1.9,"PUTT"),P(2013,"Zach Johnson",1.8,"ALL"),P(2013,"Keegan Bradley",1.8,"ALL"),P(2013,"Jordan Spieth",1.8,"PUTT"),P(2013,"Webb Simpson",1.7,"ALL"),P(2013,"Hunter Mahan",1.7,"ALL"),P(2013,"Steve Stricker",1.7,"PUTT"),P(2013,"Bill Haas",1.6,"ALL"),
+  P(2015,"Jordan Spieth",2.6,"PUTT"),P(2015,"Dustin Johnson",2.1,"BALL"),P(2015,"Bubba Watson",2.0,"BALL"),P(2015,"Rickie Fowler",1.9,"ALL"),P(2015,"Zach Johnson",1.8,"ALL"),P(2015,"Matt Kuchar",1.8,"ALL"),P(2015,"Patrick Reed",1.8,"MATCH"),P(2015,"Jimmy Walker",1.7,"ALL"),P(2015,"J.B. Holmes",1.7,"BALL"),P(2015,"Phil Mickelson",1.7,"BIRD"),P(2015,"Chris Kirk",1.6,"ALL"),P(2015,"Bill Haas",1.6,"ALL"),
+  P(2017,"Dustin Johnson",2.4,"BALL"),P(2017,"Jordan Spieth",2.3,"PUTT"),P(2017,"Justin Thomas",2.3,"BIRD"),P(2017,"Brooks Koepka",2.0,"BALL"),P(2017,"Rickie Fowler",2.0,"ALL"),P(2017,"Matt Kuchar",1.8,"ALL"),P(2017,"Patrick Reed",1.7,"MATCH"),P(2017,"Daniel Berger",1.7,"ALL"),P(2017,"Charley Hoffman",1.6,"ALL"),P(2017,"Phil Mickelson",1.6,"BIRD"),P(2017,"Kevin Kisner",1.6,"PUTT"),P(2017,"Kevin Chappell",1.5,"ALL"),
+  P(2019,"Justin Thomas",2.1,"BIRD"),P(2019,"Dustin Johnson",2.0,"BALL"),P(2019,"Patrick Cantlay",2.0,"ALL"),P(2019,"Xander Schauffele",2.0,"ALL"),P(2019,"Bryson DeChambeau",1.9,"BALL"),P(2019,"Matt Kuchar",1.9,"ALL"),P(2019,"Gary Woodland",1.8,"ALL"),P(2019,"Tony Finau",1.8,"BALL"),P(2019,"Webb Simpson",1.8,"ALL"),P(2019,"Rickie Fowler",1.8,"ALL"),P(2019,"Patrick Reed",1.6,"MATCH"),P(2019,"Tiger Woods",1.5,"ALL"),
+  P(2022,"Scottie Scheffler",2.6,"BALL"),P(2022,"Patrick Cantlay",2.1,"ALL"),P(2022,"Xander Schauffele",2.1,"ALL"),P(2022,"Justin Thomas",2.0,"BIRD"),P(2022,"Collin Morikawa",2.0,"BALL"),P(2022,"Jordan Spieth",1.9,"PUTT"),P(2022,"Tony Finau",1.9,"BALL"),P(2022,"Cameron Young",1.8,"BALL"),P(2022,"Sam Burns",1.8,"ALL"),P(2022,"Max Homa",1.8,"ALL"),P(2022,"Billy Horschel",1.7,"ALL"),P(2022,"Kevin Kisner",1.5,"PUTT"),
+  P(2024,"Scottie Scheffler",2.9,"BALL"),P(2024,"Xander Schauffele",2.5,"ALL"),P(2024,"Collin Morikawa",2.0,"BALL"),P(2024,"Wyndham Clark",1.9,"ALL"),P(2024,"Patrick Cantlay",1.9,"ALL"),P(2024,"Russell Henley",1.9,"ALL"),P(2024,"Keegan Bradley",1.8,"ALL"),P(2024,"Sahith Theegala",1.8,"ALL"),P(2024,"Tony Finau",1.7,"BALL"),P(2024,"Sam Burns",1.6,"ALL"),P(2024,"Brian Harman",1.6,"PUTT"),P(2024,"Max Homa",1.6,"ALL"),
+];
+const POOL_INT=[
+  P(1994,"Nick Price",2.4,"ALL",1),P(1994,"Vijay Singh",1.9,"BALL",1),P(1994,"Steve Elkington",1.8,"BALL",1),P(1994,"Frank Nobilo",1.6,"ALL",1),P(1994,"David Frost",1.6,"ALL",1),P(1994,"Robert Allenby",1.5,"ALL",1),P(1994,"Craig Parry",1.5,"ALL",1),P(1994,"Fulton Allem",1.5,"ALL",1),P(1994,"Peter Senior",1.4,"ALL",1),P(1994,"Mark McNulty",1.4,"ALL",1),P(1994,"Bradley Hughes",1.3,"ALL",1),P(1994,"Tsukasa Watanabe",1.2,"ALL",1),
+  P(1996,"Greg Norman",2.5,"BALL",1),P(1996,"Ernie Els",2.2,"BALL",1),P(1996,"Vijay Singh",1.9,"BALL",1),P(1996,"Steve Elkington",1.9,"BALL",1),P(1996,"Nick Price",1.9,"ALL",1),P(1996,"Jumbo Ozaki",1.7,"ALL",1),P(1996,"Frank Nobilo",1.7,"ALL",1),P(1996,"David Frost",1.6,"ALL",1),P(1996,"Robert Allenby",1.6,"ALL",1),P(1996,"Craig Parry",1.5,"ALL",1),P(1996,"Mark McNulty",1.4,"ALL",1),P(1996,"Peter Senior",1.4,"ALL",1),
+  P(1998,"Ernie Els",2.3,"BALL",1),P(1998,"Vijay Singh",2.1,"BALL",1),P(1998,"Greg Norman",1.9,"BALL",1),P(1998,"Nick Price",1.9,"ALL",1),P(1998,"Steve Elkington",1.8,"BALL",1),P(1998,"Stuart Appleby",1.6,"ALL",1),P(1998,"Shigeki Maruyama",1.6,"ALL",1),P(1998,"Carlos Franco",1.6,"ALL",1),P(1998,"Craig Parry",1.5,"ALL",1),P(1998,"Frank Nobilo",1.5,"ALL",1),P(1998,"Joe Ozaki",1.4,"ALL",1),P(1998,"Greg Turner",1.3,"ALL",1),
+  P(2000,"Ernie Els",2.4,"BALL",1),P(2000,"Vijay Singh",2.1,"BALL",1),P(2000,"Retief Goosen",1.8,"ALL",1),P(2000,"Mike Weir",1.8,"ALL",1),P(2000,"Stuart Appleby",1.7,"ALL",1),P(2000,"Robert Allenby",1.7,"ALL",1),P(2000,"Greg Norman",1.6,"BALL",1),P(2000,"Steve Elkington",1.6,"BALL",1),P(2000,"Michael Campbell",1.6,"ALL",1),P(2000,"Shigeki Maruyama",1.6,"ALL",1),P(2000,"Carlos Franco",1.5,"ALL",1),P(2000,"Nick Price",1.5,"ALL",1),
+  P(2003,"Ernie Els",2.5,"BALL",1),P(2003,"Vijay Singh",2.3,"BALL",1),P(2003,"Mike Weir",2.2,"ALL",1),P(2003,"Retief Goosen",2.0,"ALL",1),P(2003,"Adam Scott",1.9,"BALL",1),P(2003,"K.J. Choi",1.8,"ALL",1),P(2003,"Stuart Appleby",1.7,"ALL",1),P(2003,"Robert Allenby",1.6,"ALL",1),P(2003,"Nick Price",1.6,"ALL",1),P(2003,"Tim Clark",1.5,"PUTT",1),P(2003,"Stephen Leaney",1.5,"ALL",1),P(2003,"Peter Lonard",1.5,"ALL",1),
+  P(2005,"Retief Goosen",2.1,"ALL"),P(2005,"Vijay Singh",2.2,"BALL"),P(2005,"Adam Scott",2.0,"BALL"),P(2005,"Michael Campbell",1.9,"ALL"),P(2005,"Stuart Appleby",1.8,"ALL"),P(2005,"Mike Weir",1.7,"ALL"),P(2005,"Ángel Cabrera",1.7,"BALL"),P(2005,"Tim Clark",1.6,"PUTT"),P(2005,"Trevor Immelman",1.6,"ALL"),P(2005,"Peter Lonard",1.5,"ALL"),P(2005,"Nick O'Hern",1.5,"ALL"),P(2005,"Mark Hensby",1.5,"ALL"),
+  P(2007,"Ángel Cabrera",1.9,"BALL"),P(2007,"Geoff Ogilvy",2.0,"ALL"),P(2007,"Ernie Els",2.0,"BALL"),P(2007,"Adam Scott",2.0,"BALL"),P(2007,"Vijay Singh",1.9,"BALL"),P(2007,"Retief Goosen",1.8,"ALL"),P(2007,"K.J. Choi",1.8,"ALL"),P(2007,"Stuart Appleby",1.7,"ALL"),P(2007,"Rory Sabbatini",1.7,"ALL"),P(2007,"Trevor Immelman",1.7,"ALL"),P(2007,"Mike Weir",1.6,"ALL"),P(2007,"Nick O'Hern",1.4,"ALL"),
+  P(2009,"Geoff Ogilvy",2.0,"ALL"),P(2009,"Ernie Els",1.8,"BALL"),P(2009,"Ángel Cabrera",1.8,"BALL"),P(2009,"Retief Goosen",1.8,"ALL"),P(2009,"Camilo Villegas",1.8,"ALL"),P(2009,"Mike Weir",1.8,"ALL"),P(2009,"Vijay Singh",1.7,"BALL"),P(2009,"Y.E. Yang",1.7,"ALL"),P(2009,"Adam Scott",1.6,"BALL"),P(2009,"Robert Allenby",1.6,"ALL"),P(2009,"Tim Clark",1.6,"PUTT"),P(2009,"Ryo Ishikawa",1.5,"ALL"),
+  P(2011,"Adam Scott",2.0,"BALL"),P(2011,"Charl Schwartzel",2.0,"ALL"),P(2011,"Jason Day",1.9,"ALL"),P(2011,"Geoff Ogilvy",1.7,"ALL"),P(2011,"K.J. Choi",1.7,"ALL"),P(2011,"Retief Goosen",1.6,"ALL"),P(2011,"Ernie Els",1.6,"BALL"),P(2011,"Aaron Baddeley",1.6,"PUTT"),P(2011,"Ryo Ishikawa",1.6,"ALL"),P(2011,"Y.E. Yang",1.5,"ALL"),P(2011,"Robert Allenby",1.5,"ALL"),P(2011,"K.T. Kim",1.4,"ALL"),
+  P(2013,"Adam Scott",2.3,"BALL"),P(2013,"Jason Day",2.0,"ALL"),P(2013,"Louis Oosthuizen",2.0,"BALL"),P(2013,"Charl Schwartzel",1.9,"ALL"),P(2013,"Ángel Cabrera",1.8,"BALL"),P(2013,"Hideki Matsuyama",1.8,"ALL"),P(2013,"Graham DeLaet",1.8,"ALL"),P(2013,"Ernie Els",1.7,"BALL"),P(2013,"Branden Grace",1.7,"ALL"),P(2013,"Marc Leishman",1.7,"ALL"),P(2013,"Richard Sterne",1.5,"ALL"),P(2013,"Brendon de Jonge",1.5,"ALL"),
+  P(2015,"Jason Day",2.4,"ALL"),P(2015,"Louis Oosthuizen",2.1,"BALL"),P(2015,"Adam Scott",2.0,"BALL"),P(2015,"Hideki Matsuyama",2.0,"ALL"),P(2015,"Branden Grace",1.9,"ALL"),P(2015,"Charl Schwartzel",1.8,"ALL"),P(2015,"Marc Leishman",1.7,"ALL"),P(2015,"Anirban Lahiri",1.6,"ALL"),P(2015,"Danny Lee",1.6,"ALL"),P(2015,"Thongchai Jaidee",1.5,"ALL"),P(2015,"Sangmoon Bae",1.5,"ALL"),P(2015,"Steven Bowditch",1.4,"ALL"),
+  P(2017,"Hideki Matsuyama",2.3,"ALL"),P(2017,"Jason Day",1.9,"ALL"),P(2017,"Adam Scott",1.9,"BALL"),P(2017,"Marc Leishman",1.9,"ALL"),P(2017,"Louis Oosthuizen",1.8,"BALL"),P(2017,"Charl Schwartzel",1.7,"ALL"),P(2017,"Branden Grace",1.7,"ALL"),P(2017,"Si Woo Kim",1.7,"ALL"),P(2017,"Emiliano Grillo",1.6,"ALL"),P(2017,"Adam Hadwin",1.6,"ALL"),P(2017,"Jhonattan Vegas",1.6,"ALL"),P(2017,"Anirban Lahiri",1.4,"ALL"),
+  P(2019,"Adam Scott",1.9,"BALL"),P(2019,"Hideki Matsuyama",1.9,"ALL"),P(2019,"Cameron Smith",1.9,"ALL"),P(2019,"Louis Oosthuizen",1.8,"BALL"),P(2019,"Marc Leishman",1.8,"ALL"),P(2019,"Abraham Ancer",1.8,"ALL"),P(2019,"Sungjae Im",1.8,"ALL"),P(2019,"Joaquín Niemann",1.7,"BALL"),P(2019,"Adam Hadwin",1.6,"ALL"),P(2019,"C.T. Pan",1.6,"ALL"),P(2019,"Byeong Hun An",1.6,"ALL"),P(2019,"Li Haotong",1.5,"ALL"),
+  P(2022,"Hideki Matsuyama",1.9,"ALL"),P(2022,"Sungjae Im",1.9,"ALL"),P(2022,"Tom Kim",1.8,"ALL"),P(2022,"Corey Conners",1.8,"BALL"),P(2022,"Si Woo Kim",1.7,"ALL"),P(2022,"Adam Scott",1.6,"BALL"),P(2022,"Mito Pereira",1.6,"BALL"),P(2022,"Taylor Pendrith",1.6,"BALL"),P(2022,"Christiaan Bezuidenhout",1.6,"ALL"),P(2022,"K.H. Lee",1.6,"ALL"),P(2022,"Cameron Davis",1.6,"ALL"),P(2022,"Sebastián Muñoz",1.5,"ALL"),
+  P(2024,"Hideki Matsuyama",2.1,"ALL"),P(2024,"Sungjae Im",1.8,"ALL"),P(2024,"Corey Conners",1.8,"BALL"),P(2024,"Adam Scott",1.7,"BALL"),P(2024,"Tom Kim",1.7,"ALL"),P(2024,"Jason Day",1.7,"ALL"),P(2024,"Si Woo Kim",1.7,"ALL"),P(2024,"Byeong Hun An",1.7,"ALL"),P(2024,"Min Woo Lee",1.7,"BALL"),P(2024,"Taylor Pendrith",1.7,"BALL"),P(2024,"Christiaan Bezuidenhout",1.7,"ALL"),P(2024,"Mackenzie Hughes",1.5,"ALL"),
+];
+const POOL=[...POOL_EUR.map(p=>({...p,side:"EUR"})),...POOL_USA.map(p=>({...p,side:"USA"})),...POOL_INT.map(p=>({...p,side:"INT"}))];
+const TYPE_LABEL={BALL:"Ball-striker",BIRD:"Birdie-maker",PUTT:"Clutch putter",MATCH:"Match-play",ALL:"All-rounder"};
+const OPP=[2.363,2.087,1.983,1.882,1.827,1.75,1.69,1.648,1.605,1.553,1.505,1.428]; // avg SG by within-team rank across all 60 Ryder & Presidents Cup teams
+
+const SIDES_FOR={RC:["EUR","USA"],PC:["USA","INT"]};
+const SIDE_NAME={EUR:"Europe",USA:"USA",INT:"Internationals"};
+const SIDE_VAR={EUR:"var(--eur)",USA:"var(--usa)",INT:"var(--int)"};
+const SLOTS=[];
+YEARS.forEach(Y=>SIDES_FOR[Y.event].forEach(side=>SLOTS.push({y:Y.y,side,event:Y.event,venue:Y.venue,won:Y.won})));
+const slotKey=s=>s.y+"|"+s.side;
+
+const $=id=>document.getElementById(id);
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let state={};
+
+function show(scr){document.querySelectorAll(".scr").forEach(s=>s.classList.remove("on"));$(scr).classList.add("on");window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});}
+
+function startDraft(){
+  const hideSG=$("hideToggle").classList.contains("on");
+  const uniquePlayers=$("uniqueToggle").classList.contains("on");
+  const skips=$("respinToggle").classList.contains("on")?1:0;
+  state={picks:[], usedSlots:[], skips, current:null, hideSG, uniquePlayers};
+  $("d-skips").textContent=state.skips;
+  $("venue").innerHTML="";
+  $("options").innerHTML="";
+  $("spinBtn").disabled=false;
+  $("spinBtn").textContent="Spin the reel";
+  renderRoster();
+  updateProgress();
+  buildStrip();
+  show("scr-draft");
+}
+function updateProgress(){
+  const n=state.picks.length;
+  $("d-pick").textContent=Math.min(n+1,12);
+  $("d-prog").style.width=(n/12*100)+"%";
+}
+function comp(){
+  const e=state.picks.filter(p=>p.side==="EUR").length;
+  const u=state.picks.filter(p=>p.side==="USA").length;
+  const i=state.picks.filter(p=>p.side==="INT").length;
+  return {e, u, i};
+}
+function splitStr(c){return [[c.e,"EUR"],[c.u,"USA"],[c.i,"INT"]].filter(x=>x[0]>0).map(x=>x[0]+" "+x[1]).join(" · ");}
+function availSlots(){
+  return SLOTS.filter(s=>!state.usedSlots.includes(slotKey(s)) && eligible(s).length>0);
+}
+function eligible(slot){
+  const takenSlot=new Set(state.picks.map(p=>p.name+"|"+p.y+"|"+p.side));
+  const takenName=new Set(state.picks.map(p=>p.name));
+  return POOL.filter(p=>p.y===slot.y && p.side===slot.side
+    && !takenSlot.has(p.name+"|"+p.y+"|"+p.side)
+    && !(state.uniquePlayers && takenName.has(p.name)));
+}
+function buildStrip(landSlot){
+  const strip=$("strip");
+  let cells=[];
+  for(let i=0;i<30;i++){cells.push(SLOTS[Math.floor(Math.random()*SLOTS.length)]);}
+  if(landSlot!=null) cells.push(landSlot);
+  strip.innerHTML=cells.map(s=>`<div class="cell">${s.y}<span class="yv" style="color:${SIDE_VAR[s.side]}">${SIDE_NAME[s.side]}</span></div>`).join("");
+  strip.style.transition="none";
+  strip.style.transform="translateY(0px)";
+  return cells.length;
+}
+
+let spinning=false;
+function spin(){
+  if(spinning) return;
+  const avail=availSlots();
+  if(avail.length===0) return;
+  const land=avail[Math.floor(Math.random()*avail.length)];
+  state.current=land;
+  $("options").innerHTML="";
+  $("venue").innerHTML="";
+  spinning=true;
+  $("spinBtn").disabled=true;
+
+  const total=buildStrip(land);
+  const strip=$("strip");
+  const cellH=54;
+  const centered=-((total-1)*cellH) + (108-cellH)/2;
+
+  if(reduce){
+    strip.style.transform="translateY("+centered+"px)";
+    landed(land);
+    return;
+  }
+  strip.getBoundingClientRect();
+  strip.style.transition="transform 2.7s cubic-bezier(.12,.66,.16,1)";
+  strip.style.transform="translateY("+centered+"px)";
+  const onEnd=()=>{strip.removeEventListener("transitionend",onEnd);landed(land);};
+  strip.addEventListener("transitionend",onEnd);
+}
+function landed(slot){
+  spinning=false;
+  $("venue").innerHTML=`<div class="evt ${slot.event==="PC"?"pc":"rc"}">${slot.event==="PC"?"Presidents Cup":"Ryder Cup"}</div><div class="yy">${slot.y}</div><div class="team" style="color:${SIDE_VAR[slot.side]}">${SIDE_NAME[slot.side]}</div><div class="vv">${slot.venue}</div><div class="won">${slot.won}</div>`;
+  renderOptions(slot);
+}
+function sideChip(side){return `<span class="chip ${side.toLowerCase()}">${side}</span>`;}
+function renderOptions(slot){
+  const hide=state.hideSG;
+  const opts=eligible(slot).slice().sort((a,b)=> hide ? a.name.localeCompare(b.name) : b.sg-a.sg);
+  let html=`<div class="opthint">Draft one — ${slot.y} ${SIDE_NAME[slot.side]}</div>`;
+  html+=opts.map((p,i)=>`
+    <div class="optrow" role="button" tabindex="0" data-idx="${i}">
+      <div class="sgbadge" style="color:${hide?'#5f7268':ratingColor(rating(p.sg))}">${hide?'··':rating(p.sg)}</div>
+      <div style="flex:1">
+        <div class="opt-nm">${p.name}</div>
+        <div class="opt-meta"><span class="chip">${TYPE_LABEL[p.type]}</span>${p.est?'<span class="chip est">EST</span>':''}<span>${hide?'rating hidden':'rating / 100'}</span></div>
+      </div>
+    </div>`).join("");
+  if(state.skips>0) html+=`<div class="respin"><button class="btn ghost" id="respinBtn">Re-spin · ${state.skips} left</button></div>`;
+  $("options").innerHTML=html;
+  document.querySelectorAll("#options .optrow").forEach(el=>{
+    const go=()=>draft(opts[+el.dataset.idx]);
+    el.addEventListener("click",go);
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});
+  });
+  const rb=$("respinBtn"); if(rb) rb.addEventListener("click",reSpin);
+}
+function sgColor(sg){if(sg>=2.4)return"#E9D29A";if(sg>=2.0)return"#cfe8d6";if(sg>=1.7)return"#bccabf";return"#9fb1a7";}
+const rating=sg=>Math.max(50,Math.min(100,Math.round(50+16*sg)));
+function ratingColor(r){if(r>=88)return"#E9D29A";if(r>=80)return"#cfe8d6";if(r>=72)return"#bccabf";return"#9fb1a7";}
+function reSpin(){ if(state.skips<=0) return; state.skips--; $("d-skips").textContent=state.skips; spin(); }
+function draft(p){
+  const Y=YEARS.find(v=>v.y===p.y);
+  state.picks.push({...p,venue:Y.venue.split(" · ")[0],event:Y.event});
+  state.usedSlots.push(p.y+"|"+p.side);
+  state.current=null;
+  $("options").innerHTML="";
+  $("venue").innerHTML="";
+  renderRoster();
+  updateProgress();
+  if(state.picks.length>=12){ $("spinBtn").disabled=true; setTimeout(score,420); }
+  else { $("spinBtn").disabled=false; $("spinBtn").textContent="Spin the reel"; buildStrip(); }
+}
+function sideDot(side){return `<span class="sidedot ${side==="EUR"?"sd-eur":side==="USA"?"sd-usa":"sd-int"}"></span>`;}
+function renderRoster(){
+  const c=comp();
+  $("railhead").innerHTML=`Your XII · <span>${splitStr(c)||"—"}</span>`;
+  let rows="";
+  for(let i=0;i<12;i++){
+    const p=state.picks[i];
+    if(p){rows+=`<div class="slot">${sideDot(p.side)}<span class="ix">${String(i+1).padStart(2,"0")}</span><span class="sn">${p.name}<small>${p.y} · ${p.venue}${p.est?" · EST":""}</small></span><span class="sv">${state.hideSG?"··":rating(p.sg)}</span></div>`;}
+    else{rows+=`<div class="slot empty"><span class="sidedot" style="background:#27362f"></span><span class="ix">${String(i+1).padStart(2,"0")}</span><span class="sn">—</span><span class="sv">·</span></div>`;}
+  }
+  $("roster").innerHTML=rows;
+}
+
+/* ---------- scoring ---------- */
+const logistic=(k,d)=>Math.min(0.96,Math.max(0.04,1/(1+Math.exp(-k*d))));
+function score(){
+  const ps=state.picks.slice().sort((a,b)=>b.sg-a.sg);
+  const matches=[];
+  // Two sessions each of foursomes & fourballs (8 + 8) + 12 singles = 28
+  const foursomesPairs=[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11],[0,2],[1,3]];
+  const fourballPairs =[[0,1],[2,3],[4,5],[6,7],[8,9],[10,11],[1,2],[0,3]];
+  // FOURSOMES (alternate shot) — low variance, ball-striking rewarded
+  foursomesPairs.forEach(([i,j])=>{
+    const a=ps[i],b=ps[j];
+    let r=(a.sg+b.sg)/2;
+    const balls=(a.type==="BALL")+(b.type==="BALL"); r+=balls*0.07; if(balls===1)r+=0.04;
+    const o=(OPP[i]+OPP[j])/2 + 0.07;
+    matches.push({sess:"Foursomes",p:logistic(1.5,r-o),a:`${a.name} / ${b.name}`});
+  });
+  // FOURBALL (best ball) — high variance, birdies rewarded
+  fourballPairs.forEach(([i,j])=>{
+    const a=ps[i],b=ps[j];
+    const hi=Math.max(a.sg,b.sg),lo=Math.min(a.sg,b.sg);
+    let r=hi+0.4*lo;
+    const bird=(["BIRD","PUTT"].includes(a.type))+(["BIRD","PUTT"].includes(b.type)); r+=bird*0.06;
+    const oh=Math.max(OPP[i],OPP[j]),ol=Math.min(OPP[i],OPP[j]);
+    const o=oh+0.4*ol+0.05;
+    matches.push({sess:"Fourball",p:logistic(1.1,r-o),a:`${a.name} / ${b.name}`});
+  });
+  // SINGLES
+  for(let i=0;i<12;i++){
+    const a=ps[i]; let r=a.sg;
+    if(a.type==="MATCH")r+=0.08; if(a.type==="PUTT")r+=0.04;
+    matches.push({sess:"Singles",p:logistic(1.2,r-OPP[i]),a:a.name,seed:i+1});
+  }
+  const ov=ps.map(p=>rating(p.sg));
+  const teamOVR=Math.round(Math.exp(ov.reduce((s,v)=>s+Math.log(v),0)/ov.length));
+  const best=ps[0];
+  const c=comp();
+  state.R={matches,teamOVR,best,ps,c};
+  renderSquad(state.R);
+  runCup();
+  show("scr-result");
+}
+
+/* ---------- result + play ---------- */
+function burst(el){if(reduce||!el)return;el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
+function renderSquad(R){
+  const rows=R.ps.map((p,i)=>`<div class="slot">${sideDot(p.side)}<span class="ix">${String(i+1).padStart(2,"0")}</span><span class="sn">${p.name}<small>${p.y} \u00b7 ${p.event==="PC"?"Presidents Cup":"Ryder Cup"} \u00b7 ${p.venue}${p.est?" \u00b7 EST":""} \u00b7 ${TYPE_LABEL[p.type]}</small></span><span class="sv" style="color:${ratingColor(rating(p.sg))}">${rating(p.sg)}</span></div>`).join("");
+  $("rosterfull").innerHTML=`<h3>Your XII \u00b7 ${splitStr(R.c)}</h3>${rows}`;
+}
+function renderWall(out){
+  const M=state.R.matches;
+  const group=(name)=>`<div class="sess ${name.toLowerCase()}"><div class="sh">${name}</div><div class="pips">${
+    M.map((m,idx)=>({m,idx})).filter(o=>o.m.sess===name).map(({m,idx})=>{
+      const won=out[idx];
+      return `<div class="pip ${won?'pw':'pl'}" tabindex="0">${won?'\u2713':'\u2715'}<span class="tip"><b>${m.sess}${m.seed?" #"+m.seed:""}</b><br>${m.a}<br>${won?'Point won':'Point lost'}</span></div>`;
+    }).join("")}</div></div>`;
+  $("wall").innerHTML=group("Foursomes")+group("Fourball")+group("Singles");
+}
+function verdictFor(w){
+  if(w===28)return{tag:"To nil!",line:"You actually did it \u2014 all 28 points. No real side ever has — Ryder or Presidents. Go on, screenshot it."};
+  if(w>=25)return{tag:"Annihilation",line:"The field never laid a glove on them."};
+  if(w>=21)return{tag:"Hammering",line:"A proper romp \u2014 just shy of the clean sweep."};
+  if(w>=18)return{tag:"Cruised it",line:"Cup wrapped up with plenty to spare."};
+  if(w>=15)return{tag:"Cup secured",line:"Job done \u2014 closer than the squad would like."};
+  if(w===14)return{tag:"Halved!",line:"Agony. One half-point from the whole thing."};
+  if(w>=11)return{tag:"Pipped",line:"So near. The field nicked it down the stretch."};
+  return{tag:"Off day",line:"Oof. That one goes in the bin \u2014 run it back."};
+}
+function pickStar(out){
+  const M=state.R.matches;
+  const won=M.map((m,i)=>({m,i})).filter(o=>out[o.i]&&o.m.sess==="Singles");
+  if(won.length){
+    let nm=null,sg=-9,seed=0;
+    won.forEach(({m})=>{const p=state.R.ps[m.seed-1];if(p&&p.sg>sg){sg=p.sg;nm=p.name;seed=m.seed;}});
+    return{name:nm,detail:`Won his singles at #${seed} \u2014 the marquee point of the day.`};
+  }
+  return{name:state.R.best.name,detail:"Top of the order, dragging everyone along."};
+}
+function applyRun(out,w){
+  const op=28-w,v=verdictFor(w);
+  $("verdict").innerHTML=`<div class="vtag ${w===28?'goldtag':''}">${v.tag}</div>
+    <div class="score"><span class="me">${w}</span><span class="sep">\u2013</span><span class="op">${op}</span></div>
+    <div class="vsub"><span>Your XII</span><span>The field</span></div>
+    <div class="vline">${v.line}</div>`;
+  renderWall(out);
+  $("stats").innerHTML=`
+    <div class="stat"><div class="lab">Squad rating</div><div class="val">${state.R.teamOVR}</div></div>
+    <div class="stat"><div class="lab">Squad mix</div><div class="val sm">${splitStr(state.R.c)}</div></div>`;
+  const star=pickStar(out);
+  $("feedback").innerHTML=`
+    <div class="fb good"><div class="lab">Your hammer</div><div class="big">${state.R.best.name}</div><small>${rating(state.R.best.sg)} rated \u2014 ${state.R.best.y} vintage, your highest pick and the name the field least wants to see.</small></div>
+    <div class="fb good"><div class="lab">Star of the show</div><div class="big">${star.name}</div><small>${star.detail}</small></div>`;
+  if(w===28)burst($("verdict"));
+}
+function runCup(){const M=state.R.matches;let w=0;const out=M.map(m=>{const win=Math.random()<m.p;if(win)w++;return win;});applyRun(out,w);}
+
+/* ---------- wire up ---------- */
+const hideToggle=$("hideToggle");
+function flipHide(){const on=!hideToggle.classList.contains("on");hideToggle.classList.toggle("on",on);hideToggle.setAttribute("aria-checked",on);}
+hideToggle.addEventListener("click",flipHide);
+hideToggle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flipHide();}});
+const uniqueToggle=$("uniqueToggle");
+function flipUnique(){const on=!uniqueToggle.classList.contains("on");uniqueToggle.classList.toggle("on",on);uniqueToggle.setAttribute("aria-checked",on);}
+uniqueToggle.addEventListener("click",flipUnique);
+uniqueToggle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flipUnique();}});
+const respinToggle=$("respinToggle");
+function flipRespin(){const on=!respinToggle.classList.contains("on");respinToggle.classList.toggle("on",on);respinToggle.setAttribute("aria-checked",on);}
+respinToggle.addEventListener("click",flipRespin);
+respinToggle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flipRespin();}});
+$("startBtn").addEventListener("click",startDraft);
+$("spinBtn").addEventListener("click",spin);
+$("againBtn").addEventListener("click",startDraft);
+$("homeBtn").addEventListener("click",()=>show("scr-title"));
+$("runAgain").addEventListener("click",runCup);
+</script>
+</body>
+</html>
